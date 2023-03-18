@@ -5,4 +5,9 @@
     <string name="create_note">Create Note</string>
     <string name="view_notes">View Notes</string>
     <string name="view_notes_fragment">view notes fragment</string>
+    <string name="note_title">Title… e.g. shopping list</string>
+    <string name="note_contents">Contents.. e.g. bread + milk</string>
+    <string name="when_should_this_note_be_completed">Estimated date of completion</string>
+    <string name="add_note_image">Add Note Image</string>
+    <string name="create_a_note">Create a note</string>
 </resources>
