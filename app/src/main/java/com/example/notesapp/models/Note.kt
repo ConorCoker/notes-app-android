@@ -6,6 +6,5 @@ data class Note(
     val title: String,
     val noteContents: String,
     val createdDate: Date,
-    var lastsUntil: Date,
-    val completedDate: Date
+    var lastsUntil: String,  //change to date when i read up on Date
 )

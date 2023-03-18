@@ -1,14 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateNoteFragment">
+    android:background="@drawable/gradient_main">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="create note fragment" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_a_note"
+            android:textSize="32sp"
+            android:layout_margin="24dp"
+            android:textStyle="italic"
+            android:textColor="@color/black"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="244dp"
+        android:layout_margin="12dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/note_title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_note_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/transparent_with_border"
+            android:fontFamily="sans-serif-light"
+            android:inputType="text"
+            android:textSize="16sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="244dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:hint="@string/note_contents">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_note_contents"
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:background="@drawable/transparent_with_border"
+            android:fontFamily="sans-serif-light"
+            android:inputType="textImeMultiLine"
+            android:textSize="16sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="244dp"
+        android:layout_margin="12dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/when_should_this_note_be_completed">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_note_expected_completion_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/transparent_with_border"
+            android:fontFamily="sans-serif-light"
+            android:inputType="date"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/image_button_create_note"
+            android:layout_marginTop="12dp"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/add_note_image"
+            android:src="@drawable/baseline_note_add_24">
+
+        </ImageButton>
+
+    </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+</ScrollView>
+
+
+
