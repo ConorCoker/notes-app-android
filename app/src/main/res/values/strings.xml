@@ -10,4 +10,6 @@
     <string name="when_should_this_note_be_completed">Estimated date of completion</string>
     <string name="add_note_image">Add Note Image</string>
     <string name="create_a_note">Create a note</string>
+    <string name="created_at">Created at:</string>
+    <string name="complete_by">Complete By:</string>
 </resources>
