@@ -32,7 +32,7 @@ class NoteAdapter(private val mList: ArrayList<Note>, private val listener: (Not
 
         holder.textViewCreatedAt.text = itemsViewModel.createdDate.toString()
 
-        holder.textViewLastsUntil.text = itemsViewModel.lastsUntil
+        holder.textViewLastsUntil.text = itemsViewModel.lastsUntil.toString()
 
         holder.itemView.setOnClickListener { listener(itemsViewModel) }
 
@@ -48,7 +48,7 @@ class NoteAdapter(private val mList: ArrayList<Note>, private val listener: (Not
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val textViewContents: TextView = itemView.findViewById(R.id.text_view_contents)
         val textViewTitle: TextView = itemView.findViewById(R.id.text_view_title)
-        val textViewCreatedAt: TextView = itemView.findViewById(R.id.text_view_date_created)
-        val textViewLastsUntil: TextView = itemView.findViewById(R.id.text_view_lasts_until)
+        val textViewCreatedAt: TextView = itemView.findViewById(R.id.text_view_date_created_contents)
+        val textViewLastsUntil: TextView = itemView.findViewById(R.id.text_view_lasts_until_contents)
     }
 }

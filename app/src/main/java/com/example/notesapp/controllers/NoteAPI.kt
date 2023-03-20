@@ -1,20 +1,28 @@
 package com.example.notesapp.controllers
 
 import com.example.notesapp.models.Note
+import java.util.*
+import kotlin.collections.ArrayList
 
 
-class NoteAPI() {
+class NoteAPI private constructor() {
 
-    private val notes = ArrayList<Note>()
+    private val notes: ArrayList<Note> = ArrayList()
 
-    init {
-        notes.add(Note("Note 1", "This is the first note", "2022-03-20", "2022-03-21"))
-        notes.add(Note("Note 2", "This is the second note", "2022-03-21", "2022-03-22"))
-        notes.add(Note("Note 3", "This is the third note", "2022-03-22", "2022-03-23"))
+    companion object {
+        private var instance: NoteAPI? = null
+
+        fun getInstance():NoteAPI{
+            if (instance==null){
+                instance = NoteAPI()
+            }
+            return instance!!
+        }
     }
 
     fun getNotes() = notes
 
-    fun addNote(note:Note) = notes.add(note)
+    fun addNote(note: Note) = notes.add(note)
+
 
 }

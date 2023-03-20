@@ -5,12 +5,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
-    android:background="@drawable/transparent_with_border">
+    android:background="@drawable/transparent_with_border"
+    android:clickable="true"
+    android:focusable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:padding="12dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="12dp">
 
         <TextView
             android:id="@+id/text_view_title"
@@ -28,33 +30,53 @@
             android:id="@+id/text_view_contents"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
             android:fontFamily="sans-serif-medium"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_view_title"
-            tools:text="Bread, Milk, Eggs, Cheese, Apples, Bananas, Chicken, Rice, Pasta, Tomato sauce.">
-
-        </TextView>
+            tools:text="Bread, Milk, Eggs, Cheese, Apples, Bananas, Chicken, Rice, Pasta, Tomato sauce."></TextView>
 
         <TextView
-            android:id="@+id/text_view_date_created"
+            android:id="@+id/text_view_date_created_heading"
             android:layout_width="wrap_content"
-            android:textSize="14sp"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/created_at"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_view_contents"
-            tools:text="Created at: 12/04/2023" />
+            app:layout_constraintTop_toBottomOf="@id/text_view_contents" />
 
         <TextView
-            android:id="@+id/text_view_lasts_until"
+            android:id="@+id/text_view_date_created_contents"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:layout_marginStart="4dp"
             android:fontFamily="sans-serif-medium"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/text_view_date_created_heading"
+            app:layout_constraintTop_toTopOf="@id/text_view_date_created_heading"
+            tools:text="20/03/2023" />
+
+        <TextView
+            android:id="@+id/text_view_lasts_until_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/complete_by"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_view_date_created"
-            tools:text="Complete by: 18/04/2023" />
+            app:layout_constraintTop_toBottomOf="@id/text_view_date_created_heading" />
+
+        <TextView
+            android:id="@+id/text_view_lasts_until_contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/text_view_lasts_until_heading"
+            app:layout_constraintTop_toTopOf="@id/text_view_lasts_until_heading"
+            tools:text="20/03/2023" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
