@@ -27,8 +27,8 @@ class CreateNoteFragment : Fragment() {
     private fun setupClickListener() {
         binding.imageButtonCreateNote.setOnClickListener {
             if (allFieldsFilled()){
-                notes.notes.add(Note(binding.editTextNoteTitle.text.toString(),binding.editTextNoteContents.text.toString(),Date(),binding.editTextNoteExpectedCompletionDate.text.toString())) //need to sort out this
-                Toast.makeText(context,"Now there is ${notes.notes.size} notes in system!",Toast.LENGTH_LONG).show()
+                notes.addNote(Note(binding.editTextNoteTitle.text.toString(),binding.editTextNoteContents.text.toString(),"",binding.editTextNoteExpectedCompletionDate.text.toString())) //need to sort out this
+                Toast.makeText(context,"Now there is ${notes.getNotes().size} notes in system!",Toast.LENGTH_LONG).show()
             }else{
                 Toast.makeText(context,"Please enter all fields!",Toast.LENGTH_LONG).show()
             }
