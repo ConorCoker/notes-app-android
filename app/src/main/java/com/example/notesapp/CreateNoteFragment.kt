@@ -2,28 +2,27 @@ package com.example.notesapp
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.notesapp.controllers.NoteAPI
 import com.example.notesapp.databinding.FragmentCreateNoteBinding
 import com.example.notesapp.models.Note
 import com.example.notesapp.utils.Utils
-import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class CreateNoteFragment : Fragment() {
 
     private lateinit var binding: FragmentCreateNoteBinding
     private var dateChanged = false
-    private lateinit var completeBy: Date
+    private lateinit var completeBy: LocalDate
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        Toast.makeText(context, "onCreateView() in create note has been called", Toast.LENGTH_LONG)
-            .show()
         binding = FragmentCreateNoteBinding.inflate(layoutInflater)
         setupCalender()
         setupOnClickListeners()
@@ -31,26 +30,17 @@ class CreateNoteFragment : Fragment() {
     }
 
     private fun setupCalender() {
-
         val calendar = Calendar.getInstance()
         binding.calenderViewExpectedCompletion.minDate = calendar.timeInMillis
         calendar.add(Calendar.YEAR, 1)
         binding.calenderViewExpectedCompletion.maxDate = calendar.timeInMillis
-
     }
 
     private fun setupOnClickListeners() {
 
         binding.calenderViewExpectedCompletion.setOnDateChangeListener { _, year, month, day ->
             dateChanged = true
-            Log.d("date", "year is $year month is $month day is $day")
-            val formatter = SimpleDateFormat("dd-MM-yy", Locale.UK)
-
-            val correctedMonth =
-                month + 1 //for some reason month param is always a month behind selected month
-            val date = formatter.parse("$day-$correctedMonth-$year")
-            completeBy = date!!
-
+            completeBy= LocalDate.of(year,month+1,day)
         }
 
         binding.imageButtonCreateNote.setOnClickListener {
