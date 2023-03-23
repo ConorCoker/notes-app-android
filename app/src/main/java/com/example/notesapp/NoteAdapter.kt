@@ -6,6 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notesapp.models.Note
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 class NoteAdapter(private val mList: ArrayList<Note>, private val listener: (Note) -> Unit) :
     RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
@@ -30,13 +33,18 @@ class NoteAdapter(private val mList: ArrayList<Note>, private val listener: (Not
 
         holder.textViewTitle.text = itemsViewModel.title
 
-        holder.textViewCreatedAt.text = itemsViewModel.createdDate.toString()
-
-        holder.textViewLastsUntil.text = itemsViewModel.lastsUntil.toString()
-
         holder.itemView.setOnClickListener { listener(itemsViewModel) }
 
+        val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy").withLocale(
+            Locale.ENGLISH
+        )
+        val formattedCreatedDate = itemsViewModel.createdDate!!.format(formatter)
 
+        holder.textViewCreatedAt.text = formattedCreatedDate
+
+        val formattedLastUntil = itemsViewModel.lastsUntil.format(formatter)
+
+        holder.textViewLastsUntil.text = formattedLastUntil
     }
 
     // return the number of the items in the list
@@ -48,7 +56,9 @@ class NoteAdapter(private val mList: ArrayList<Note>, private val listener: (Not
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val textViewContents: TextView = itemView.findViewById(R.id.text_view_contents)
         val textViewTitle: TextView = itemView.findViewById(R.id.text_view_title)
-        val textViewCreatedAt: TextView = itemView.findViewById(R.id.text_view_date_created_contents)
-        val textViewLastsUntil: TextView = itemView.findViewById(R.id.text_view_lasts_until_contents)
+        val textViewCreatedAt: TextView =
+            itemView.findViewById(R.id.text_view_date_created_contents)
+        val textViewLastsUntil: TextView =
+            itemView.findViewById(R.id.text_view_lasts_until_contents)
     }
 }

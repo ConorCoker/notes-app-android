@@ -1,11 +1,12 @@
 package com.example.notesapp.models
 
-import java.util.Date
+import java.time.LocalDate
+import java.time.LocalDate.now
 
 class Note(
     val title: String,
     val noteContents: String,
-    var lastsUntil: Date,
+    var lastsUntil: LocalDate,
 ) {
-    val createdDate = Date()
+    val createdDate: LocalDate? = now()
 }
