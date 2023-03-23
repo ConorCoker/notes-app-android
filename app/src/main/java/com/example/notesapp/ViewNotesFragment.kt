@@ -27,6 +27,7 @@ class ViewNotesFragment : Fragment() {
         setupOptionsMenu()
         setupRecyclerView()
         return binding.root
+        
     }
 
     private fun setupOptionsMenu() {

@@ -27,22 +27,6 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 //        setupOptionsMenu()
     }
 
-//    private fun setupOptionsMenu() {
-//        addMenuProvider(object : MenuProvider {
-//            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-//                // Add menu items here
-//                menuInflater.inflate(R.menu.menu_options, menu)
-//            }
-//
-//            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-//                when(menuItem.itemId){
-//                    R.id.remove_all_notes -> notes.getInstance().clearAllNotes()
-//                    else -> return false
-//                }
-//                return true
-//            }
-//        })
-//    }
     override fun onNavigationItemSelected(item: MenuItem) =
         when (item.itemId) {
             R.id.nav_create_note -> onCreateNoteClicked()
@@ -51,7 +35,9 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         }
 
     private fun onViewNotesClicked(): Boolean {
-        supportFragmentManager.commit { replace(R.id.fragment_container, ViewNotesFragment()) }
+        supportFragmentManager.commit {
+            setCustomAnimations(R.anim.slide_in,0)
+            replace(R.id.fragment_container, ViewNotesFragment()) }
         return true
     }
 
