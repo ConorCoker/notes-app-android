@@ -30,6 +30,8 @@ class CreateNoteFragment : Fragment() {
         return binding.root
     }
 
+
+
     private fun setupCalender() {
 
         val calendar = Calendar.getInstance()

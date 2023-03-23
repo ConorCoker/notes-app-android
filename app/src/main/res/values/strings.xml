@@ -12,4 +12,5 @@
     <string name="create_a_note">Create a note</string>
     <string name="created_at">Created at:</string>
     <string name="complete_by">Complete By:</string>
+    <string name="remove_all_notes">Remove all notes</string>
 </resources>
