@@ -24,5 +24,9 @@ class NoteAPI private constructor() {
 
     fun addNote(note: Note) = notes.add(note)
 
+    fun clearAllNotes(){
+        notes.clear()
+    }
+
 
 }
