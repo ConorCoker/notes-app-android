@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         setContentView(binding.root)
     }
 
+
     override fun onNavigationItemSelected(item: MenuItem) =
         when (item.itemId) {
             R.id.nav_create_note -> onCreateNoteClicked()
@@ -29,7 +30,9 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         }
 
     private fun onViewNotesClicked(): Boolean {
-        supportFragmentManager.commit { replace(R.id.fragment_container, ViewNotesFragment()) }
+        supportFragmentManager.commit {
+            setCustomAnimations(R.anim.slide_in,0)
+            replace(R.id.fragment_container, ViewNotesFragment()) }
         return true
     }
 

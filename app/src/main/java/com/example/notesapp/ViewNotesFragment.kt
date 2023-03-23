@@ -22,6 +22,7 @@ class ViewNotesFragment : Fragment() {
         Toast.makeText(context,"onCreateView() in view note has been called", Toast.LENGTH_LONG).show()
         setupRecyclerView()
         return binding.root
+        
     }
 
     private fun setupRecyclerView() {

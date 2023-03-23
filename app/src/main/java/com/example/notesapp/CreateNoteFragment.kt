@@ -36,7 +36,6 @@ class CreateNoteFragment : Fragment() {
         binding.calenderViewExpectedCompletion.minDate = calendar.timeInMillis
         calendar.add(Calendar.YEAR, 1)
         binding.calenderViewExpectedCompletion.maxDate = calendar.timeInMillis
-
     }
 
     private fun setupOnClickListeners() {
