@@ -7,6 +7,6 @@ class Note(
     val title: String,
     val noteContents: String,
     var lastsUntil: LocalDate,
-) {
+) : java.io.Serializable {
     val createdDate: LocalDate? = now()
 }
