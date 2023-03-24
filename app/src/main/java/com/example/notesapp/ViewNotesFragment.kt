@@ -52,6 +52,10 @@ class ViewNotesFragment : Fragment() {
     }
 
     private fun moveToInDepthView(noteToView: Note) {
+        Log.d("click","You have clicked note: ${noteToView.title}")
+        val intent = Intent(context,InDepthNoteActivity::class.java)
+        intent.putExtra("note",noteToView)
+        startActivity(intent)
 
     }
 }

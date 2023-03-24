@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         binding = ActivityMainBinding.inflate(layoutInflater)
         binding.bottomNav.setOnItemSelectedListener(this)
         setContentView(binding.root)
-//        setupOptionsMenu()
     }
 
     override fun onNavigationItemSelected(item: MenuItem) =
