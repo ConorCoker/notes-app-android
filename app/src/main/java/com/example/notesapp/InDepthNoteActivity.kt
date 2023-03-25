@@ -3,6 +3,7 @@ package com.example.notesapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.notesapp.controllers.NoteAPI
 import com.example.notesapp.databinding.ActivityInDepthNoteBinding
 import com.example.notesapp.models.Note
@@ -25,8 +26,8 @@ class InDepthNoteActivity : AppCompatActivity() {
     private fun setupDeleteButton() {
 
         binding.buttonDeleteNote.setOnClickListener {
-            notes.getInstance().removeNote(note)
-            startActivity(Intent(this, MainActivity::class.java))
+               notes.getInstance().removeNoteByTitle(note.title)
+                startActivity(Intent(this, MainActivity::class.java))
         }
     }
 

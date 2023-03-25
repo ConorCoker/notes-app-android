@@ -1,16 +1,10 @@
 package com.example.notesapp
 
-import android.app.ActionBar
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.Toast
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
-
-
 import com.example.notesapp.controllers.NoteAPI
 import com.example.notesapp.databinding.FragmentViewNotesBinding
 import com.example.notesapp.models.Note

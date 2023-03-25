@@ -12,8 +12,8 @@ class NoteAPI private constructor() {
     companion object {
         private var instance: NoteAPI? = null
 
-        fun getInstance():NoteAPI{
-            if (instance==null){
+        fun getInstance(): NoteAPI {
+            if (instance == null) {
                 instance = NoteAPI()
             }
             return instance!!
@@ -24,11 +24,16 @@ class NoteAPI private constructor() {
 
     fun addNote(note: Note) = notes.add(note)
 
-    fun clearAllNotes(){
+    fun clearAllNotes() {
         notes.clear()
     }
-    fun removeNote(note:Note) = notes.remove(note)
 
+    fun removeNoteByTitle(title: String) {
+        notes.forEach {
+            if (it.title == title)
+                notes.remove(it)
+        }
+    }
 
 
 }
