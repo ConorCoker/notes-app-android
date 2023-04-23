@@ -28,12 +28,7 @@ class NoteAPI private constructor() {
         notes.clear()
     }
 
-    fun removeNoteByTitle(title: String) {
-        notes.forEach {
-            if (it.title == title)
-                notes.remove(it)
-        }
-    }
+
 
 
 }

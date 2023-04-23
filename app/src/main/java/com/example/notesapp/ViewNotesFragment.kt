@@ -13,7 +13,7 @@ import com.example.notesapp.models.NoteJSONStore
 class ViewNotesFragment : Fragment() {
 
     private lateinit var binding: FragmentViewNotesBinding
-    private lateinit var notes:NoteJSONStore
+    private lateinit var notes: NoteJSONStore
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,7 +23,7 @@ class ViewNotesFragment : Fragment() {
         setupOptionsMenu()
         setupRecyclerView()
         return binding.root
-        
+
     }
 
     private fun setupOptionsMenu() {
@@ -40,6 +40,7 @@ class ViewNotesFragment : Fragment() {
             }
         }
     }
+
     private fun setupRecyclerView() {
         val notesAdapter = NoteAdapter(notes.findAll() as ArrayList<Note>) {
             moveToInDepthView(it)
@@ -48,10 +49,9 @@ class ViewNotesFragment : Fragment() {
     }
 
     private fun moveToInDepthView(noteToView: Note) {
-        Log.d("click","You have clicked note: ${noteToView.title}")
-        val intent = Intent(context,InDepthNoteActivity::class.java)
-        intent.putExtra("note",noteToView)
+        Log.d("click", "You have clicked note: ${noteToView.title}")
+        val intent = Intent(context, InDepthNoteActivity::class.java)
+        intent.putExtra("noteId", noteToView.id)
         startActivity(intent)
-
     }
 }

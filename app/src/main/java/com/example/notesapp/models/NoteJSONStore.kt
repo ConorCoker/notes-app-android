@@ -39,14 +39,24 @@ class NoteJSONStore(private val context: Context) {
         save()
     }
 
-    fun create(note: Note):Boolean {
+    fun getNoteById(id: Long) = notes.find { it.id == id }
+
+    fun removeNoteById(id: Long) {
+        notes.forEach {
+            if (it.id == id)
+                notes.remove(it)
+            save()
+        }
+    }
+
+    fun create(note: Note): Boolean {
         note.id = generateRandomId()
         val result = notes.add(note)
         serialize()
         return result
     }
 
-    fun save(){
+    fun save() {
         serialize()
     }
 

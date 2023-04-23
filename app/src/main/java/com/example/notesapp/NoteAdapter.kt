@@ -39,16 +39,6 @@ class NoteAdapter(private val mList: ArrayList<Note>, private val listener: (Not
 
         holder.textViewLastsUntil.text = itemsViewModel.lastsUntil
 
-//        val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy").withLocale(
-//            Locale.ENGLISH
-//        )
-//        val formattedCreatedDate = itemsViewModel.createdDate!!.format(formatter)
-//
-//        holder.textViewCreatedAt.text = formattedCreatedDate
-//
-//        val formattedLastUntil = itemsViewModel.lastsUntil.format(formatter)
-//
-//        holder.textViewLastsUntil.text = formattedLastUntil
     }
 
     // return the number of the items in the list
