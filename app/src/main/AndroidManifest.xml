@@ -16,7 +16,8 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true"> <!--windowSoftInputMode="adjustPan this means when keyboard is present views wont move at allowBackup"-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
