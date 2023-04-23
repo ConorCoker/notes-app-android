@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
-import com.example.notesapp.controllers.NoteAPI
 import com.example.notesapp.databinding.FragmentViewNotesBinding
 import com.example.notesapp.models.Note
 import com.example.notesapp.models.NoteJSONStore

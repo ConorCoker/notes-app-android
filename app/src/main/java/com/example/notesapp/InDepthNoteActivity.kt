@@ -1,10 +1,9 @@
 package com.example.notesapp
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import com.example.notesapp.controllers.NoteAPI
 import com.example.notesapp.databinding.ActivityInDepthNoteBinding
 import com.example.notesapp.models.Note
 import com.example.notesapp.models.NoteJSONStore
@@ -38,6 +37,10 @@ class InDepthNoteActivity : AppCompatActivity() {
         binding.textViewTitle.text = note.title
         binding.textViewNoteContents.text = note.noteContents
         binding.textViewDateCreatedContents.text = note.createdDate
+        if (note.isExpired()){
+            binding.textViewLastsUntilContents.setTextColor(Color.RED)
+        }
         binding.textViewLastsUntilContents.text = note.lastsUntil
+
     }
 }
