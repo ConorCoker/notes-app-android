@@ -35,16 +35,20 @@ class NoteAdapter(private val mList: ArrayList<Note>, private val listener: (Not
 
         holder.itemView.setOnClickListener { listener(itemsViewModel) }
 
-        val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy").withLocale(
-            Locale.ENGLISH
-        )
-        val formattedCreatedDate = itemsViewModel.createdDate!!.format(formatter)
+        holder.textViewCreatedAt.text = itemsViewModel.createdDate
 
-        holder.textViewCreatedAt.text = formattedCreatedDate
+        holder.textViewLastsUntil.text = itemsViewModel.lastsUntil
 
-        val formattedLastUntil = itemsViewModel.lastsUntil.format(formatter)
-
-        holder.textViewLastsUntil.text = formattedLastUntil
+//        val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy").withLocale(
+//            Locale.ENGLISH
+//        )
+//        val formattedCreatedDate = itemsViewModel.createdDate!!.format(formatter)
+//
+//        holder.textViewCreatedAt.text = formattedCreatedDate
+//
+//        val formattedLastUntil = itemsViewModel.lastsUntil.format(formatter)
+//
+//        holder.textViewLastsUntil.text = formattedLastUntil
     }
 
     // return the number of the items in the list
