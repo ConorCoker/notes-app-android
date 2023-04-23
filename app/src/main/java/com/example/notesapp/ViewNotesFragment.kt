@@ -8,16 +8,18 @@ import androidx.fragment.app.Fragment
 import com.example.notesapp.controllers.NoteAPI
 import com.example.notesapp.databinding.FragmentViewNotesBinding
 import com.example.notesapp.models.Note
+import com.example.notesapp.models.NoteJSONStore
 
 class ViewNotesFragment : Fragment() {
 
     private lateinit var binding: FragmentViewNotesBinding
-    private var notes = NoteAPI
+    private lateinit var notes:NoteJSONStore
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentViewNotesBinding.inflate(inflater, container, false)
+        notes = NoteJSONStore(requireContext())
         setupOptionsMenu()
         setupRecyclerView()
         return binding.root
@@ -30,7 +32,7 @@ class ViewNotesFragment : Fragment() {
         binding.myToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.remove_all_notes -> {
-                    notes.getInstance().clearAllNotes()
+                    notes.removeAll()
                     setupRecyclerView()
                     true
                 }
@@ -39,7 +41,7 @@ class ViewNotesFragment : Fragment() {
         }
     }
     private fun setupRecyclerView() {
-        val notesAdapter = NoteAdapter(NoteAPI.getInstance().getNotes()) {
+        val notesAdapter = NoteAdapter(notes.findAll() as ArrayList<Note>) {
             moveToInDepthView(it)
         }
         binding.recyclerViewListNotes.adapter = notesAdapter

@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.notesapp.controllers.NoteAPI
 import com.example.notesapp.databinding.FragmentCreateNoteBinding
 import com.example.notesapp.models.Note
+import com.example.notesapp.models.NoteJSONStore
 import com.example.notesapp.utils.Utils
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -19,16 +19,17 @@ class CreateNoteFragment : Fragment() {
 
     private lateinit var binding: FragmentCreateNoteBinding
     private var dateChanged = false
-    private lateinit var completeBy: LocalDate
+    private var completeBy = LocalDate.now()
+    private lateinit var notes: NoteJSONStore
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCreateNoteBinding.inflate(layoutInflater)
         setupCalender()
         setupOnClickListeners()
+        notes = NoteJSONStore(requireContext())
         return binding.root
     }
-
 
 
     private fun setupCalender() {
@@ -38,44 +39,49 @@ class CreateNoteFragment : Fragment() {
         binding.calenderViewExpectedCompletion.maxDate = calendar.timeInMillis
     }
 
+
     private fun setupOnClickListeners() {
 
         binding.calenderViewExpectedCompletion.setOnDateChangeListener { _, year, month, day ->
             dateChanged = true
-            completeBy= LocalDate.of(year,month+1,day)
+            completeBy = LocalDate.of(year, month + 1, day)
+            Log.d("date","completeBy is set to: $completeBy")
         }
+
 
         binding.imageButtonCreateNote.setOnClickListener {
             if (allFieldsFilledAndDateChanged()) {
-                if (NoteAPI.getInstance().addNote(
+                val formatter: DateTimeFormatter =
+                    DateTimeFormatter.ofPattern("dd/MM/yyyy").withLocale(
+                        Locale.ENGLISH
+                    )
+                if (notes.create(
                         Note(
                             binding.editTextNoteTitle.text.toString(),
                             binding.editTextNoteContents.text.toString(),
-                            completeBy
+                            completeBy.format(formatter)
                         )
                     )
                 ) {
-                    Toast.makeText(context, "Note added!", Toast.LENGTH_LONG).show()
+
+                    notes.save()
                     Utils.clearTextInputEditTexts(
                         binding.editTextNoteTitle,
                         binding.editTextNoteContents
                     )
-                } else {
-                    Toast.makeText(
-                        context,
-                        "Something went wrong while creating your note!",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-            } else {
-                Toast.makeText(
+
+                } else Toast.makeText(
                     context,
-                    "You have not entered all required fields and/or changed date",
+                    "Something went wrong whilst creating your note!",
                     Toast.LENGTH_LONG
                 ).show()
-            }
-        }
+            } else Toast.makeText(
+                context,
+                "You have not entered all required fields and/or changed date!",
+                Toast.LENGTH_LONG
+            ).show()
 
+        }
     }
 
     private fun allFieldsFilledAndDateChanged() =
