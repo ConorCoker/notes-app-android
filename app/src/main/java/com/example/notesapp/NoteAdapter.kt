@@ -1,13 +1,12 @@
 package com.example.notesapp
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notesapp.models.Note
-import java.time.format.DateTimeFormatter
-import java.util.*
 import kotlin.collections.ArrayList
 
 class NoteAdapter(private val mList: ArrayList<Note>, private val listener: (Note) -> Unit) :
@@ -38,6 +37,10 @@ class NoteAdapter(private val mList: ArrayList<Note>, private val listener: (Not
         holder.textViewCreatedAt.text = itemsViewModel.createdDate
 
         holder.textViewLastsUntil.text = itemsViewModel.lastsUntil
+
+        if (itemsViewModel.isExpired()){
+            holder.textViewLastsUntil.setTextColor(Color.RED)
+        }
 
     }
 
