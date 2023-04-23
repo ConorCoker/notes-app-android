@@ -14,4 +14,5 @@
     <string name="complete_by">Complete By:</string>
     <string name="remove_all_notes">Remove all notes</string>
     <string name="delete_note">Delete Note</string>
+    <string name="set_reminder">Set Reminder</string>
 </resources>
