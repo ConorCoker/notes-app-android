@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.fragment.app.commit
 import com.example.notesapp.databinding.ActivityMainBinding
+import com.example.notesapp.helpers.AlarmHelper
+import com.example.notesapp.models.NoteJSONStore
 import com.google.android.material.navigation.NavigationBarView
+import java.util.Date
 
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 
@@ -27,8 +30,9 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
     private fun onViewNotesClicked(): Boolean {
         supportFragmentManager.commit {
-            setCustomAnimations(R.anim.slide_in,0)
-            replace(R.id.fragment_container, ViewNotesFragment()) }
+            setCustomAnimations(R.anim.slide_in, 0)
+            replace(R.id.fragment_container, ViewNotesFragment())
+        }
         return true
     }
 
@@ -37,6 +41,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         return true
     }
 }
+
 
 
 

@@ -2,6 +2,7 @@ package com.example.notesapp.models
 
 import android.content.Context
 import android.net.Uri
+import com.example.notesapp.helpers.AlarmHelper
 import com.example.notesapp.helpers.exists
 import com.example.notesapp.helpers.read
 import com.example.notesapp.helpers.write
@@ -35,6 +36,8 @@ class NoteJSONStore(private val context: Context) {
     }
 
     fun removeAll() {
+        val alarmHelper = AlarmHelper(this.context)
+        notes.forEach { alarmHelper.cancelAlarm(it.id) } //cancels all note alarms
         notes.clear()
         save()
     }
@@ -42,9 +45,11 @@ class NoteJSONStore(private val context: Context) {
     fun getNoteById(id: Long) = notes.find { it.id == id }
 
     fun removeNoteById(id: Long) {
+        val alarmHelper = AlarmHelper(this.context)
         notes.forEach {
             if (it.id == id)
                 notes.remove(it)
+            alarmHelper.cancelAlarm(it.id) // cancels any upcoming alarm for this note
             save()
         }
     }
@@ -52,17 +57,15 @@ class NoteJSONStore(private val context: Context) {
     fun create(note: Note): Boolean {
         note.id = generateRandomId()
         val result = notes.add(note)
-        serialize()
+        val alarmHelper = AlarmHelper(this.context)
+        val timeRemaining = note.getStringDateAsDate(note.lastsUntil)!!.time - Date().time
+        alarmHelper.setAlarm(note.id, Date().time+(timeRemaining / 2))
+        serialize() // the above sets an alarm for that note , that will activate when half the time remaining has elapsed.
         return result
     }
 
     fun save() {
         serialize()
-    }
-
-
-    fun update(note: Note) {
-        // todo
     }
 
     private fun serialize() {

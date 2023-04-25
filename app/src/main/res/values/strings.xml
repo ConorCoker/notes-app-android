@@ -15,4 +15,6 @@
     <string name="remove_all_notes">Remove all notes</string>
     <string name="delete_note">Delete Note</string>
     <string name="set_reminder">Set Reminder</string>
+    <string name="channel_name">notes app note due notification</string>
+    <string name="channel_description">Reminder/notification for due date of note approaching</string>
 </resources>

@@ -17,17 +17,27 @@ class Note(
             Locale.ENGLISH
         )
     val createdDate: String = now().format(formatter)
-    var id:Long = 0L
-    @SuppressLint("SimpleDateFormat")
-    fun isExpired():Boolean{
-        val formatter = SimpleDateFormat("dd/MM/yyyy")
-        try {
-            val date:Date? = formatter.parse(lastsUntil)
-            return !date!!.after(Date())
-        }catch (_:ParseException){
+    var id: Long = 0L
 
+    @SuppressLint("SimpleDateFormat")
+    fun getStringDateAsDate(date: String): Date? {
+        val formatter = SimpleDateFormat("dd/MM/yyyy")
+        return try {
+            formatter.parse(date)
+        } catch (_: ParseException) {
+            null
         }
-        return false
     }
+
+
+    fun isExpired(): Boolean {
+
+        val date = getStringDateAsDate(lastsUntil)
+        return !date!!.after(Date())
+
+
+    }
+
+
 }
 
